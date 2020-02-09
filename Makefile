@@ -8,6 +8,6 @@ build-images:
 push-images:
 	$(foreach image, ${images}, $(MAKE) -C ${images-dir}/${image} push;)
 build-libs:
-	$(foreach image, ${images}, /scripts/python/python-build.sh ${image};)
+	$(foreach lib, ${libs}, /scripts/python/python-build.sh ${libs-dir}/${lib};)
 push-libs:
-	$(foreach image, ${images}, /scripts/python/python-push.sh ${image};)
+	$(foreach lib, ${libs}, /scripts/python/python-push.sh ${libs-dir}/${lib};)
