@@ -4,6 +4,7 @@ venv
 .vscode
 dist/
 build/
+*.eggs
 *.egg
 *.egg-info
 .DS_Store
