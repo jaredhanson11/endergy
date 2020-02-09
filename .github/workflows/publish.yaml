@@ -10,7 +10,7 @@ jobs:
       env:
         TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
         TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
-        TWINE_REPOSITORY_URL: "https://pyrepo.endergy.co/simple/"
+        TWINE_REPOSITORY_URL: "https://pyrepo.endergy.co/"
       with:
         entrypoint: /scripts/github-workflows/publish-python.sh
     - name: Build and publish docker image
