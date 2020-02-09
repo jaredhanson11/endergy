@@ -1,7 +1,7 @@
 images-dir=./web
 images=$(shell ls ${images-dir})
-lib-dir=./lib
-libs=$(shell ls ${lib-dir})
+libs-dir=./lib
+libs=$(shell ls ${libs-dir})
 
 build-images:
 	$(foreach image, ${images}, $(MAKE) -C ${images-dir}/${image} build;)
