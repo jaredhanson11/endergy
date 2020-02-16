@@ -1,7 +1,6 @@
 '''
 Common Endergy related tables that will be used across all modules.
 '''
-import enum
 from sqlalchemy import Column, Integer, String, Numeric, ForeignKey, \
     CheckConstraint, Table
 from sqlalchemy.orm import relationship
