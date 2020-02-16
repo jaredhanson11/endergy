@@ -1,5 +1,5 @@
 '''
 Common functionality for all Endergy web instances.
 '''
-import responses
-import flask_setup
+from . import responses
+from . import flask_setup
