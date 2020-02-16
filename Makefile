@@ -1,4 +1,4 @@
-images-dir=./web
+images-dir=./modules
 images=$(shell ls ${images-dir})
 libs-dir=./lib
 # Exclude setup.py as a lib
