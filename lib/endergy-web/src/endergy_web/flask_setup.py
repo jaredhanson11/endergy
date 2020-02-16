@@ -5,6 +5,8 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_restful import Api
 
+from controllers import heartbeat
+
 
 def create_app(name):
     '''Initiliaze Flask app object with configs'''
@@ -20,6 +22,10 @@ def create_db(app):
 
 
 def create_api(app):
-    '''Initialize Flask-RESTful api object'''
+    '''
+    Initialize Flask-RESTful api object
+    Adds common controllers to api object.
+    '''
     api = Api(app)
+    api.add_resource(heartbeat.HeartbeatController, '/hb')
     return api
