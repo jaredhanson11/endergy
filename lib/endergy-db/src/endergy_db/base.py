@@ -6,7 +6,8 @@ from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
 schemas = {
     'common': 'endergy_common',
-    'surrogate': 'endergy_surrogate'
+    'surrogate': 'endergy_surrogate',
+    'energyplus': 'endergy_energyplus'
 }
 
 
@@ -43,3 +44,11 @@ class EndergySurrogateBaseModel:
     Scopes these tables to the 'endergy_surrogate' schema.
     '''
     __table_args__ = {'schema': schemas['surrogate']}
+
+
+class EnergyplusBaseModel:
+    '''
+    Models related to the Energyplus.
+    Scopes these tables to the 'endergy_energyplus' schema.
+    '''
+    __table_args__ = {'schema': schemas['energyplus']}
