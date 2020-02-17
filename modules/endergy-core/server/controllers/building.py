@@ -7,7 +7,7 @@ from endergy_web import responses
 
 
 class BuildingListController(Resource):
-    '''API for individual building record'''
+    '''API for list of building records'''
 
     def get(self):
         '''Get all buildings.'''
@@ -22,13 +22,13 @@ class BuildingController(Resource):
     '''API for individual building record'''
 
     def get(self, id):
-        '''Get building info.'''
+        '''Get building.'''
         return responses.server_error('This endpoint has not been implemented')
 
     def put(self, id):
-        '''Get building info.'''
+        '''Edit building.'''
         return responses.server_error('This endpoint has not been implemented')
 
     def delete(self, id):
-        '''Get building info.'''
+        '''Delete building.'''
         return responses.server_error('This endpoint has not been implemented')
