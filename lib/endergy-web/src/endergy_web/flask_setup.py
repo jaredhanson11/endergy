@@ -8,20 +8,20 @@ from flask_restful import Api
 from .controllers import heartbeat
 
 
-def create_app(name):
+def create_app(name) -> Flask:
     '''Initiliaze Flask app object with configs'''
     app = Flask(__name__)
     app.config.from_envvar('APP_CONFIG')
     return app
 
 
-def create_db(app):
+def create_db(app) -> SQLAlchemy:
     '''Initialize Flask-SQLAlchemy db object'''
     db = SQLAlchemy(app)
     return db
 
 
-def create_api(app):
+def create_api(app) -> Api:
     '''
     Initialize Flask-RESTful api object
     Adds common controllers to api object.
