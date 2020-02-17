@@ -5,7 +5,8 @@ ARG PIP_EXTRA_INDEX_URL
 
 # Install required packages
 COPY requirements.txt ./requirements.txt
-RUN apk add --virtual .build-deps python3-dev musl-dev postgresql-dev \
+RUN apk add postgresql-dev \
+    && apk add --virtual .build-deps python3-dev musl-dev \
     && pip install --no-cache -r requirements.txt \
     && rm requirements.txt \
     && apk del .build-deps
