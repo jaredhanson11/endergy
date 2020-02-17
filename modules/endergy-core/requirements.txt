@@ -1,1 +1,3 @@
 endergy-web
+endergy-db
+endergy-rabbitmq
