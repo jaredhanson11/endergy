@@ -1,5 +1,5 @@
 images-dir=./modules
-images=$(shell ls ${images-dir})
+images=$(shell ls ${images-dir} | grep -v "config.py")
 libs-dir=./lib
 # Exclude setup.py as a lib
 libs=$(shell ls ${libs-dir} | grep -v "setup.py")
