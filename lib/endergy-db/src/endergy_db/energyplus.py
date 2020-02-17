@@ -2,7 +2,7 @@
 EnergyPlus related tables.
 '''
 from sqlalchemy import Column, Integer, String, ForeignKey, Numeric, \
-    CheckConstraint, Table
+    CheckConstraint, Table, DateTime
 from sqlalchemy.orm import relationship
 
 from . import base
@@ -20,6 +20,7 @@ class EPW(base.Base, base.EnergyplusBaseModel):
     postal = Column(String(20))
     latitude = Column(Numeric(precision=12, scale=6))
     longitude = Column(Numeric(precision=12, scale=6))
+    date_added = Column(DateTime)
 
 
 class IDF(base.Base, base.EnergyplusBaseModel):
@@ -28,6 +29,7 @@ class IDF(base.Base, base.EnergyplusBaseModel):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(50))
+    date_added = Column(DateTime)
 
 
 class EnergyplusParameter(base.Base, base.EnergyplusBaseModel):
@@ -94,6 +96,7 @@ class EnergyplusRun(base.Base, base.EnergyplusBaseModel):
     '''
     __tablename__ = 'energyplus_run'
     id = Column(Integer, primary_key=True)
+    date_added = Column(DateTime)
 
     idf_id = Column(Integer, ForeignKey(
         base.foreign_key('id', 'idf', 'energyplus')),
@@ -119,6 +122,7 @@ class EnergyplusRunResults(base.Base, base.EnergyplusBaseModel):
     '''
     __tablename__ = 'energyplus_run_results'
     id = Column(Integer, primary_key=True)
+    date_added = Column(DateTime)
 
     elec = Column(Integer)
     elec_units = Column(String(20))

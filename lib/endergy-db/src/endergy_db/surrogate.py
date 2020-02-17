@@ -15,6 +15,8 @@ class Typology(base.Base, base.EndergySurrogateBaseModel):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(30))
+    date_added = Column(DateTime)
+
     buildings = relationship('Building', back_populates='typology')
     # Typically 1000 random samples
     samples = relationship('SurrogateSample', back_populates='typology')
