@@ -14,18 +14,25 @@ class RMQConnection:
     throughout the lifecycle of the application.
     '''
     connection = None
+    config = None
 
-    def __init__(self, config: dict):
+    def __init__(self, config: dict, lazy=True):
+        self.config = config
+        if not lazy:
+            self._connect()
+
+    def _connect(self) -> None:
+        '''Connects to RMQ instance'''
         credentials = pika.PlainCredentials(
-            config['RMQ_USER'], config['RMQ_PASSWORD'])
+            self.config['RMQ_USER'], self.config['RMQ_PASSWORD'])
         parameters = pika.ConnectionParameters(
-            host=config['RMQ_HOST'],
-            port=config['RMQ_PORT'],
+            host=self.config['RMQ_HOST'],
+            port=self.config['RMQ_PORT'],
             credentials=credentials)
         self.connection = pika.BlockingConnection(parameters)
 
     def get_connection(self) -> pika.SelectConnection:
         '''Returns BlockingConnection, when initialized properly'''
         if not self.connection:
-            raise Exception('Connection object was not initialized properly.')
+            self._connect()
         return self.connection
