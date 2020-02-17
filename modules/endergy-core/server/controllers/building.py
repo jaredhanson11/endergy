@@ -12,7 +12,7 @@ from .. import db, rmq_connection
 
 # global within building.py since both Building & BuildingList controllers use
 building_geom_publisher = publish.RMQPublisher(
-    queue.NEW_BUILDING_GEOM, rmq_connection)
+    queue.NEW_BUILDING_GEOM, rmq_connection.get_connection())
 
 
 class BuildingListController(Resource):
