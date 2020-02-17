@@ -4,6 +4,9 @@ Controllers interfacing with building objects.
 from flask_restful import Resource
 
 from endergy_web import responses
+from endergy_db.common import Building
+
+from .. import db
 
 
 class BuildingListController(Resource):
@@ -11,7 +14,9 @@ class BuildingListController(Resource):
 
     def get(self):
         '''Get all buildings.'''
-        return responses.server_error('This endpoint has not been implemented')
+        buildings = db.session.query(Building).all()
+        ret = [dict(b) for b in buildings]
+        return responses.success(ret)
 
     def post(self):
         '''Post new building.'''

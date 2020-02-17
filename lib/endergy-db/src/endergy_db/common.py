@@ -15,6 +15,7 @@ class Building(base.Base, base.EndergyCommonBaseModel):
     __tablename__ = 'building'
     id = Column(Integer, primary_key=True)
 
+    name = Column(String(100))  # descriptive name of building
     description = Column(String(1000))  # freeform text with info on building
     latitude = Column(Numeric(precision=12, scale=6))
     longitude = Column(Numeric(precision=12, scale=6))
