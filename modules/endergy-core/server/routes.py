@@ -12,5 +12,5 @@ def add_routes(api: Api):
     '''
     Sets up all the api routes.
     '''
-    api.add_resource(BuildingListController, API_PREFIX + '/buildings/<int:id>')
-    api.add_resource(BuildingController, API_PREFIX + '/buildings')
+    api.add_resource(BuildingController, API_PREFIX + '/buildings/<int:id>')
+    api.add_resource(BuildingListController, API_PREFIX + '/buildings')
