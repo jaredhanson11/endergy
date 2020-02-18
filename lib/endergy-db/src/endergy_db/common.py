@@ -22,6 +22,8 @@ class Building(base.Base, base.EndergyCommonBaseModel):
     latitude = Column(Numeric(precision=12, scale=6))
     longitude = Column(Numeric(precision=12, scale=6))
 
+    geometry_id = Column(String(200))  # id of geom file in object store
+
     typology_id = Column(Integer, ForeignKey(
         base.foreign_key('id', 'typology', 'surrogate')))
     typology = relationship('Typology', back_populates='buildings')

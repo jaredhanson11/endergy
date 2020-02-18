@@ -10,8 +10,8 @@ def configure():
     '''
     Use this method to aggressively configure_mappers, default behavior is this
     method is called on first Model usage. This is an issue because
-    Model.__marshmallow__, isn't availabe until a model is used once.
-    It errors when we want to use Model.__marsh... to load a db record.
+    Model.__schema__, isn't availabe until a model is used once.
+    It errors when we want to use Model.__schema__ to load a db record.
     '''
     configure_mappers()
 
@@ -41,7 +41,7 @@ def setup_schema(Base):
                     schema_class_name, (SQLAlchemyAutoSchema,), {"Meta": Meta}
                 )
 
-                setattr(class_, "__marshmallow__", schema_class)
+                setattr(class_, "__schema__", schema_class)
 
     return setup_schema_fn
 

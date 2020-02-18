@@ -41,7 +41,11 @@ class BuildingController(Resource):
 
     def put(self, id):
         '''Edit building.'''
-        return responses.server_error('This endpoint has not been implemented')
+        post_body = request.get_json()
+        building = building_service.edit_building(id, post_body)
+        if building:
+            return responses.success(building)
+        return responses.client_error('Error updating building')
 
     def delete(self, id):
         '''Delete building.'''

@@ -1,3 +1,4 @@
 '''Known queues and (hopefully) documentation within Endergy'''
 
-NEW_BUILDING_GEOM = 'new-building-geometry'
+NEW_BUILDING = 'new-building'
+UPDATED_BUILDING = 'updated-building'
