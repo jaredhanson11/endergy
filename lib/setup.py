@@ -53,7 +53,7 @@ setup(
     author_email='jred0011@gmail.com',
     packages=find_packages('src'),
     package_dir={'': 'src'},
-    data_files=[('', [VERSION_FN, INSTALL_REQUIRES_FN])],
+    data_files=[('', [VERSION_FN])],
     install_requires=INSTALL_REQUIRES,
     setup_requires=['wheel']
 )

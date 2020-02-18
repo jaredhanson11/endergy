@@ -2,6 +2,7 @@ FROM jaredhanson11/serverbase
 
 # Allows requirements to be downloaded from custom pypi
 ARG PIP_EXTRA_INDEX_URL
+ARG PIP_TRUSTED_HOST
 
 # Install required packages
 COPY requirements.txt ./requirements.txt
