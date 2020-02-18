@@ -1,9 +1,19 @@
 '''Marshmallow sqlalchemy work'''
 from sqlalchemy import event
-from sqlalchemy.orm import mapper
+from sqlalchemy.orm import mapper, configure_mappers
 from marshmallow_sqlalchemy import ModelConversionError, SQLAlchemyAutoSchema
 
 from . import base
+
+
+def configure():
+    '''
+    Use this method to aggressively configure_mappers, default behavior is this
+    method is called on first Model usage. This is an issue because
+    Model.__marshmallow__, isn't availabe until a model is used once.
+    It errors when we want to use Model.__marsh... to load a db record.
+    '''
+    configure_mappers()
 
 
 def setup_schema(Base):

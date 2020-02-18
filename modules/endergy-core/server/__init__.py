@@ -4,9 +4,12 @@ This package contains the Flask REST Api for the Endergy Landing Page.
 
 from endergy_web import flask_setup
 from endergy_rabbitmq import RMQConnection
+from endergy_db import schema
 
 app = flask_setup.create_app(__name__)
 db = flask_setup.create_db(app)
+# Aggressively configure Schema's on all db models
+schema.configure()
 api = flask_setup.create_api(app)
 rmq_connection = RMQConnection(dict(app.config))
 
