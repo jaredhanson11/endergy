@@ -1,1 +1,0 @@
-FROM jaredhanson11/serverbase
