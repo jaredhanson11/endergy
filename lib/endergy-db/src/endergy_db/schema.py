@@ -22,6 +22,7 @@ def setup_schema(Base):
 
                 class Meta(object):
                     model = class_
+                    include_relationships = True
 
                 schema_class_name = "%sSchema" % class_.__name__
 
