@@ -1,6 +1,8 @@
 '''
 Database models related to the creation of the surrogate model.
 '''
+from datetime import datetime
+
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 
@@ -15,7 +17,7 @@ class Typology(base.Base, base.EndergySurrogateBaseModel):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(30))
-    date_added = Column(DateTime)
+    created_at = Column(DateTime, default=datetime.utcnow)
 
     buildings = relationship('Building', back_populates='typology')
     # Typically 1000 random samples

@@ -1,6 +1,8 @@
 '''
 Common Endergy related tables that will be used across all modules.
 '''
+from datetime import datetime
+
 from sqlalchemy import Column, Integer, String, Numeric, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
 
@@ -14,9 +16,9 @@ class Building(base.Base, base.EndergyCommonBaseModel):
     __tablename__ = 'building'
     id = Column(Integer, primary_key=True)
 
-    name = Column(String(100))  # descriptive name of building
+    name = Column(String(100), nullable=False)  # descriptive name of building
     description = Column(String(1000))  # freeform text with info on building
-    date_added = Column(DateTime)
+    created_at = Column(DateTime, default=datetime.utcnow)
     latitude = Column(Numeric(precision=12, scale=6))
     longitude = Column(Numeric(precision=12, scale=6))
 

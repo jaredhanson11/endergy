@@ -1,6 +1,8 @@
 '''
 EnergyPlus related tables.
 '''
+from datetime import datetime
+
 from sqlalchemy import Column, Integer, String, ForeignKey, Numeric, \
     CheckConstraint, Table, DateTime
 from sqlalchemy.orm import relationship
@@ -20,7 +22,7 @@ class EPW(base.Base, base.EnergyplusBaseModel):
     postal = Column(String(20))
     latitude = Column(Numeric(precision=12, scale=6))
     longitude = Column(Numeric(precision=12, scale=6))
-    date_added = Column(DateTime)
+    created_at = Column(DateTime, default=datetime.utcnow)
 
 
 class IDF(base.Base, base.EnergyplusBaseModel):
@@ -29,7 +31,7 @@ class IDF(base.Base, base.EnergyplusBaseModel):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(50))
-    date_added = Column(DateTime)
+    created_at = Column(DateTime, default=datetime.utcnow)
 
 
 class EnergyplusParameter(base.Base, base.EnergyplusBaseModel):
@@ -96,7 +98,7 @@ class EnergyplusRun(base.Base, base.EnergyplusBaseModel):
     '''
     __tablename__ = 'energyplus_run'
     id = Column(Integer, primary_key=True)
-    date_added = Column(DateTime)
+    created_at = Column(DateTime, default=datetime.utcnow)
 
     idf_id = Column(Integer, ForeignKey(
         base.foreign_key('id', 'idf', 'energyplus')),
@@ -122,7 +124,7 @@ class EnergyplusRunResults(base.Base, base.EnergyplusBaseModel):
     '''
     __tablename__ = 'energyplus_run_results'
     id = Column(Integer, primary_key=True)
-    date_added = Column(DateTime)
+    created_at = Column(DateTime, default=datetime.utcnow)
 
     elec = Column(Integer)
     elec_units = Column(String(20))
